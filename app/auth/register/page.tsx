@@ -6,9 +6,18 @@ import Link from 'next/link'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
+import DateTimePicker from 'react-datetime-picker'
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
+type ValuePiece = Date | null;
+type Value = ValuePiece | [ValuePiece, ValuePiece];
+
 const Page = () => {
   const [cookie, setCookie] = useCookies(["hasAccount"])
   const [userName, setUseName] = useState("")
+  const [time, setTime] = useState()
+  const [surName, setSurname] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
   const [phoneNumber, setPhoneNumber] = useState("")
@@ -17,6 +26,7 @@ const Page = () => {
   const [selectGender, setSelectGender] = useState(false)
   const [selectSex, setSelectSex] = useState("Choose")
   const { push } = useRouter()
+  const [date, setDate] = useState<Value>(new Date());
 
   useEffect(() => {
     if (cookie.hasAccount) {
@@ -69,19 +79,22 @@ const Page = () => {
             <input autoComplete='false' required value={lastName} onChange={(t) => setLastName(t.target.value)} tabIndex={2} type="text" placeholder='Фамилия' className={styles.getInfo} />
             <input autoComplete='false' required value={email} onChange={(t) => setEmail(t.target.value)} type="email" tabIndex={4} placeholder='Email' className={styles.getInfo} />
             <input autoComplete='false' required value={password2} onChange={(t) => setPassWord2(t.target.value)} type="password" tabIndex={6} placeholder='Подтвердите парль' className={styles.getInfo} />
-            <div className={styles.sex} onClick={() => {
+            <input autoComplete='false' value={surName} onChange={(t) => setSurname(t.target.value)} tabIndex={2.1} required type="text" placeholder='Отчество' className={styles.getInfo} />
+            <div tabIndex={7} className={styles.selectValue} onClick={() => {
               setSelectGender(!selectGender)
             }}>
               <div className={styles.selected}><p>{selectSex}</p></div>
               <div className={styles.choose} style={selectGender === false ? {
-                left: -450,
+                left: 0,
                 opacity: 0,
-                transition: "0.7s",
+                transition: "0.1s ease-in-out",
+                zIndex: -100,
                 // background: "#fff"
               } : {
+                zIndex: 1,
                 left: 0,
                 opacity: 1,
-                transition: "0.5s"
+                transition: "0.2s ease-in-out"
               }}>
                 {["Male", "Female", "Mentally ill", "Prefer not to say"].map(e => {
                   return <div key={e} onClick={() => {
@@ -90,15 +103,12 @@ const Page = () => {
                 })}
               </div>
             </div>
-            <div className={styles.sex} style={{
-              visibility: "hidden"
-            }} />
-            <div className={styles.sex} style={{
-              visibility: "hidden"
-            }} />
+            <div className={styles.selectValue}>
+            <DateTimePicker className={styles.dateTimePicker} onChange={setDate} value={date} />
+            </div>
             <div className={styles.complete}>
-              <button tabIndex={7}>Зарегестрироваться</button>
-              <Link tabIndex={8} href={"/auth/login"}>Уже есть аккаунт?</Link>
+              <button tabIndex={9}>Зарегестрироваться</button>
+              <Link tabIndex={9.1} href={"/auth/login"}>Уже есть аккаунт?</Link>
             </div>
           </form>
         </div>

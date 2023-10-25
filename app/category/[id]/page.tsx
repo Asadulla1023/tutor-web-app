@@ -33,7 +33,7 @@ const Page = () => {
                     </div>
                     <div className={styles.wrapper}>
                         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 11].map((i) => {
-                            return <CourseCard />
+                            return <CourseCard key={i + Math.random() + "comdom" + Math.random() ** 4} />
                         })}
                     </div>
                 </div>

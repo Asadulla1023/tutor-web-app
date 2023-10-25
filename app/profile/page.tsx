@@ -29,8 +29,7 @@ const Page = () => {
         if (hasAccount === undefined) {
             push("/auth/login")
         }
-        // console.clear()
-    }, [])
+    }, [hasAccount])
 
     const updateCookie = () => {
         setCookie("hasAccount", {

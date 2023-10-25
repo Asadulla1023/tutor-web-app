@@ -15,11 +15,13 @@
     "next": "^13.5.6",
     "react": "latest",
     "react-cookie": "^6.1.1",
+    "react-datetime-picker": "^5.5.3",
     "react-dom": "latest"
   },
   "devDependencies": {
     "@types/node": "latest",
     "@types/react": "latest",
+    "@types/react-datepicker": "^4.19.1",
     "@types/react-dom": "latest",
     "eslint": "latest",
     "eslint-config-next": "latest",

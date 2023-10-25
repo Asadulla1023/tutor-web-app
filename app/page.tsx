@@ -10,6 +10,7 @@ import CourseCard from './components/local/category/CourseCard'
 import Review from './components/local/utils/Review'
 import { useKeenSlider, KeenSliderPlugin } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
+
 import React, { useState } from 'react'
 const AdaptiveHeight: KeenSliderPlugin = (slider) => {
   function updateHeight() {

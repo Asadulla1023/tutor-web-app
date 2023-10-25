@@ -58,3 +58,11 @@ button {
 .keen-slider {
   height: 300px;
 }
+
+.react-datetime-picker__inputGroup__hour, .react-datetime-picker__inputGroup__divider, .react-datetime-picker__inputGroup__minute, .react-datetime-picker__inputGroup__leadingZero, .react-datetime-picker__clear-button {
+  display: none !important;
+
+}
+.react-datetime-picker__wrapper {
+  border: none !important;
+}
