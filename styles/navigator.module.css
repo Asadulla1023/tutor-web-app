@@ -1,0 +1,13 @@
+.navigator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  z-index: 100;
+}
+
+.navigator h4 {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--navigation-color);
+}

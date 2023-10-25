@@ -1,0 +1,52 @@
+.review {
+    background: #faf8f8;
+    border-radius: 20px;
+    width: 48%;
+    height: 225px;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    padding: 1rem;
+    flex-direction: column;
+}
+
+.stars {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.stars > h4 {
+  font-weight: 400;
+  font-size: 19px;
+  color: var(--button-bg);
+}
+
+.user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+.userInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.userInfo > h3 {
+    font-size: 20px;
+}
+
+.description {
+    margin-top: 1rem;
+}
+
+.description > p {
+    font-size: 18px;
+    color: var(--navigation-color);
+}

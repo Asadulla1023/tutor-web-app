@@ -1,0 +1,37 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding: 65px 0;
+}
+
+.footer > div {
+    align-items: flex-start;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+}
+
+.menuLeft {
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.menuLeft > h3 {
+    font-size: 18px;
+}
+
+.listWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.navigator > a {
+    color: var(--navigation-color);
+    font-size: 16px;
+}

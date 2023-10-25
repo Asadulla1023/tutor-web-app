@@ -1,0 +1,60 @@
+@import url("https://fonts.cdnfonts.com/css/futura-pt");
+
+:root {
+  --max-width: 1180px;
+  --border-radius: 20px;
+  --navigation-color: #9a9a9a;
+  --button-bg: hsl(147, 66%, 48%);
+  --hue: 223;
+  --bg: hsl(var(--hue), 90%, 90%);
+  --fg: hsl(var(--hue), 90%, 10%);
+  --primary: hsl(var(--hue), 90%, 50%);
+  --trans-dur: 0.3s;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Futura PT", sans-serif;
+}
+
+:root {
+  --container-width: 1180px;
+}
+
+html {
+  min-height: 100% !important;
+  max-height: fit-content;
+}
+
+body,
+#__next {
+  background: #faf8f8;
+  max-height: fit-content;
+  --form-control-color: #E4B71;
+  accent-color: #e4b717;
+  min-height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.keen-slider {
+  height: 300px;
+}

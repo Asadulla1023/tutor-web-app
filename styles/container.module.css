@@ -1,0 +1,5 @@
+.container {
+    width: var(--max-width);
+    display: flex;
+    justify-content: space-between;
+}

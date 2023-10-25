@@ -1,0 +1,108 @@
+.categoryCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 280px;
+  height: 312px;
+  position: relative;
+  background: #fff;
+  border-radius: 20px;
+}
+
+.courseCard {
+  display: flex;
+  flex-direction: column;
+  width: 280px;
+  background: #fff;
+  position: relative;
+  border-radius: 20px;
+  height: 312px;
+}
+
+.categoryCard > img, .courseCard > img {
+  object-fit: cover;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.categoryCard > img {
+  position: absolute;
+  height: 100%;
+}
+
+.categoryCard > h3 {
+    z-index: 2;
+    margin: 1rem auto;
+    color: #fff;
+}
+
+.categoryCard > .gradient {
+    position: absolute;
+    z-index:1;
+    background: linear-gradient(359deg, rgba(41, 203, 115, 0.71) -11.7%, rgba(146, 146, 146, 0.00) 80.95%);
+    height: 100%;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.description {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.descTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.courseTitle {
+  font-size: 20px;
+  color: #343936;
+}
+
+.seen {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.seen > h4 {
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--navigation-color);
+}
+
+.stars {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.stars > h4 {
+  font-weight: 400;
+  font-size: 19px;
+  color: var(--button-bg);
+} 
+
+.courseCost {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.courseCost > h3 {
+  color: var(--button-bg);
+  font-size: 28px;
+}
+
+.courseCost > h4 {
+  font-size: 20px;
+  font-weight: 400;
+  text-decoration: line-through;
+  color: var(--navigation-color);
+}
