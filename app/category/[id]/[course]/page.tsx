@@ -294,19 +294,21 @@ const Page = () => {
                                 </div>
                                 {loaded && instanceRef.current && (
                                     <div className={styles.controller}>
-                                        {[
-                                            ...Array(instanceRef?.current?.track?.details?.slides?.length).keys(),
-                                        ].map((idx) => {
-                                            return (
-                                                <button
-                                                    key={idx}
-                                                    onClick={() => {
-                                                        instanceRef.current?.moveToIdx(idx)
-                                                    }}
-                                                    className={(currentSlide === idx ? styles.active : styles.unActive)}
-                                                ></button>
-                                            )
-                                        })}
+                                        {
+                                            // @ts-ignore
+                                            [
+                                                0, 1, 2, 3
+                                            ].map((idx) => {
+                                                return (
+                                                    <button
+                                                        key={idx * Math.random() ** 10 + "sheeesh"}
+                                                        onClick={() => {
+                                                            instanceRef.current?.moveToIdx(idx)
+                                                        }}
+                                                        className={(currentSlide === idx ? styles.active : styles.unActive)}
+                                                    ></button>
+                                                )
+                                            })}
                                     </div>
                                 )}
 
