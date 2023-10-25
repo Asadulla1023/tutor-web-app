@@ -15,12 +15,12 @@ const Page = () => {
     const [navigation, setNavigation] = useState(0)
     const [disabled, setDisabled] = useState(true)
 
-    const [userName, setUserName] = useState(hasAccount.userName)
-    const [lastName, setLastName] = useState(hasAccount.lastName)
-    const [email, setEmail] = useState(hasAccount.email)
-    const [phoneNumber, setPhoneNumber] = useState(hasAccount.phoneNumber)
-    const [password, setPassWord] = useState(hasAccount.password)
-    const [selectSex, setSelectSex] = useState(hasAccount.gender)
+    const [userName, setUserName] = useState(hasAccount?.userName)
+    const [lastName, setLastName] = useState(hasAccount?.lastName)
+    const [email, setEmail] = useState(hasAccount?.email)
+    const [phoneNumber, setPhoneNumber] = useState(hasAccount?.phoneNumber)
+    const [password, setPassWord] = useState(hasAccount?.password)
+    const [selectSex, setSelectSex] = useState(hasAccount?.gender)
     const { push } = useRouter()
 
 
