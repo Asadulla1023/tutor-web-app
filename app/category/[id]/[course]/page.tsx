@@ -295,7 +295,6 @@ const Page = () => {
                                 {loaded && instanceRef.current && (
                                     <div className={styles.controller}>
                                         {
-                                            // @ts-ignore
                                             [
                                                 0, 1, 2, 3
                                             ].map((idx) => {
