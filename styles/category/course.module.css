@@ -352,6 +352,12 @@
 
 .reviewWrapper {
   margin: 0 0.5rem;
+
+}
+
+.sliderItem:last-child {
+  position: relative;
+  left: -1.5rem;
 }
 
 .controller > button {

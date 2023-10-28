@@ -128,7 +128,8 @@
   border: none;
 }
 
-.form > fieldset > input {
+.form > fieldset > input,
+.phoneNumber {
   width: 48.51%;
   background: #f6f6f6;
   height: 68px;
@@ -138,6 +139,23 @@
   outline: none;
   box-shadow: 0px 1px 17px 0px rgba(172, 172, 172, 0.09);
   font-size: 18px;
+}
+
+.phoneNumber {
+  display: flex;
+  align-items: center;
+  gap: 0.01rem;
+}
+
+.phoneNumber > p {
+  color: #545454;
+}
+
+.phoneNumber > input {
+  background: transparent;
+  font-size: 18px;
+  border: none;
+  outline: none;
 }
 
 .changeInformation {
@@ -160,7 +178,8 @@
   transition: 0.1s ease-in-out;
 }
 
-.active > svg > path, .active > svg > g > path {
+.active > svg > path,
+.active > svg > g > path {
   stroke: var(--button-bg);
 }
 
@@ -377,122 +396,185 @@
 }
 
 .balance > h2 {
-    font-size: 20px;
+  font-size: 20px;
 }
 
-.inCash, .cash {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+.inCash,
+.cash {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .cash > p {
-    color: var(--navigation-color);
-    font-size: 19px;
+  color: var(--navigation-color);
+  font-size: 19px;
 }
 
 .cash > h3 {
-    font-size: 22px;
-    color: var(--button-bg);
+  font-size: 22px;
+  color: var(--button-bg);
 }
 
 .cards {
-    display: flex;justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .card {
-    width: 32%;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #fafafa;
-    height: 135px;
-    border-radius: 20px;
+  width: 32%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+  height: 135px;
+  border-radius: 20px;
 }
 
 .card:first-child {
-    background: var(--button-bg);
+  background: var(--button-bg);
 }
 
 .replenish {
-    margin-left: auto;
-    background: var(--button-bg);
-    height: 68px;
-    font-size: 18px;
-    width: 250px;
-    border-radius: 40px;
-    color: #fff;
-    border: 1px solid var(--button-bg);
-    font-weight: 700;
-    transition: 0.2s ease-in-out;
+  margin-left: auto;
+  background: var(--button-bg);
+  height: 68px;
+  font-size: 18px;
+  width: 250px;
+  border-radius: 40px;
+  color: #fff;
+  border: 1px solid var(--button-bg);
+  font-weight: 700;
+  transition: 0.2s ease-in-out;
 }
 
 .replenish:hover {
-    background: #fff;
-    color: var(--button-bg);
+  background: #fff;
+  color: var(--button-bg);
 }
 
 .transactions {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-.date, .status {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
+.date,
+.status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .date {
-    margin-right: auto;
+  margin-right: auto;
 }
 
 .date > p {
-    font-size: 19px;
-    color: var(--navigation-color);
+  font-size: 19px;
+  color: var(--navigation-color);
 }
 
 .status > h3 {
-    color: var(--button-bg);
-    font-size: 19px;
+  color: var(--button-bg);
+  font-size: 19px;
 }
 
 .status > h4 {
-    font-size: 19px;
+  font-size: 19px;
 }
 
 .transaction {
-    background: #fff;
-    width: 100%;
-    height: 70px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem;
-    border-radius: 20px;
-    box-shadow: 0px 1px 17px 0px rgba(172, 172, 172, 0.09);
+  background: #fff;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 20px;
+  box-shadow: 0px 1px 17px 0px rgba(172, 172, 172, 0.09);
 }
 
 .transaction > p {
-    color: var(--navigation-color);
+  color: var(--navigation-color);
 }
 
 .transaction > h3 {
-    margin-left: 2rem;
-    margin-right: auto;
-    font-size: 19px;
+  margin-left: 2rem;
+  margin-right: auto;
+  font-size: 19px;
 }
 
 .cardWrapper {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.selectValue {
+  background: #f6f6f6;
+  border-radius: 40px;
+  width: 48%;
+  height: 68px;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  align-items: center;
+}
+
+.selectValue > .selected {
+  padding: 1rem;
+}
+
+.disabled {
+  user-select: none;
+  cursor: auto;
+}
+
+.selected > p {
+  font-size: 18px;
+  color: #545454;
+  margin-left: 0.5rem;
+}
+
+.selectValue > .choose {
+  position: absolute;
+  top: 100%;
+  border-radius: 20px;
+  background: #fff;
+  width: 100%;
+  box-shadow: 0px 1px 17px 0px rgba(148, 148, 148, 0.363);
+  margin-top: 0.3rem;
+}
+
+.gender {
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #9e9e9e4f;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.2s ease-in-out;
+}
+
+.gender:first-child {
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.gender:hover {
+  background: var(--button-bg);
+  border-bottom: 0.3px solid var(--button-bg);
+  color: #fff;
+}
+
+.gender:last-child{ 
+  border: none;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }

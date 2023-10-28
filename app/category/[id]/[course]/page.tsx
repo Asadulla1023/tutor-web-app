@@ -8,6 +8,7 @@ import CourseCard from '@/app/components/local/category/CourseCard'
 import { useKeenSlider, KeenSliderPlugin } from "keen-slider/react"
 import Review from '@/app/components/local/utils/Review'
 import "keen-slider/keen-slider.min.css"
+import Navigation from '@/app/components/global/Navigation'
 
 const AdaptiveHeight: KeenSliderPlugin = (slider) => {
     function updateHeight() {
@@ -38,6 +39,7 @@ const Page = () => {
             <div className={styles.author}>
                 <Container>
                     <div className={styles.content}>
+            <Navigation navigation='Главная/Личный кабинет' />
                         <h2>Курс по программированию</h2>
                         <p>
                             Подпишитесь и вы будете в курсе все наших акций, скидок, появление
@@ -286,7 +288,8 @@ const Page = () => {
                                 </div>
                                 <div ref={sliderRef} className={`keen-slider ${styles.reviewWrapper}`} style={{
                                     gap: 8,
-                                    height: 180,
+                                    height: 255,
+                                    margin: 8
                                 }}>
                                     {[16, 26, 36, 46].map((i, index) => {
                                         return <div key={i} className={`keen-slider__slide number-slide${index} ${styles.sliderItem}`}><Review key={index + Math.random()} /><Review /></div>

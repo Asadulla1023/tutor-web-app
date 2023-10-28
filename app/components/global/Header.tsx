@@ -7,7 +7,7 @@ import Container from './Container'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/navigation'
 const nav_items = [
-  { name: "Главная", link: "/" }, { name: "Категории", link: "/category" }, { name: "Мои чаты", link: "/chats" }
+  { name: "Главная", link: "/" }, { name: "Категории", link: "/category" }, { name: "Мои чаты", link: "/profile" }
 ]
 const languages = ["/icons/ru.svg", "/icons/uz.svg"]
 function Header() {
