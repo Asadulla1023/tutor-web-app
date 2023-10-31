@@ -9,7 +9,16 @@ import CourseCard from '../category/CourseCard'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/navigation'
 import axios from 'axios'
-import Error from '../event/Error'
+import DateTimePicker from 'react-datetime-picker'
+import Error from '@/app/components/local/event/Error'
+import 'react-datetime-picker/dist/DateTimePicker.css';
+import 'react-calendar/dist/Calendar.css';
+import 'react-clock/dist/Clock.css';
+
+type ValuePiece = Date | null;
+type Value = ValuePiece | [ValuePiece, ValuePiece];
+
+
 
 const cities: {
     country: string,
@@ -91,6 +100,7 @@ export default function UserInformation() {
     const [address, setAddress] = useState(hasAccount?.user?.address)
     const [surName, setSurName] = useState<string>(hasAccount?.user?.lastname)
     const [dateOfBirth, setDateOfBirth] = useState(hasAccount?.user?.dateOfBirth)
+    const [date, setDate] = useState<Value>(dateOfBirth ? dateOfBirth : new Date());
     const [error, setError] = useState(false)
     const [msg, setMsg] = useState<string>("")
     const [selectGender, setSelectGender] = useState(false)
@@ -101,23 +111,31 @@ export default function UserInformation() {
             push("/auth/login")
         }
     }, [hasAccount])
-
-    const birthDate = new Date(dateOfBirth).toLocaleDateString()
-
+    useEffect(()=> {
+        if(hasAccount !== undefined) {
+            axios.get(`${process.env.NEXT_PUBLIC_API}/api/users/current`, {
+                headers: {
+                    Authorization: hasAccount.userToken
+                }
+            }).then((res)=> console.log(res.data)).catch(err => console.log(err))
+        }
+    }, [])
     const handleUpdate = (e: {
         preventDefault: () => void,
         target: any
     }) => {
         e.preventDefault();
-        if (userName.length && lastName.length && surName.length && phoneNumber.length > 8 && email.length) {
+        if (userName && lastName && phoneNumber.length > 8 && email && dateOfBirth && address && surName) {
             const user = {
-                phone: `998${phoneNumber}`,
+                phone: phoneNumber.length === 9 ? `998${phoneNumber}` : phoneNumber,
                 name: userName,
                 surname: lastName,
                 email: email,
                 dateOfBirth,
                 password,
-                address
+                address,
+                lastname: lastName,
+                gender: selectSex
             }
             axios.put(`${process.env.NEXT_PUBLIC_API}/api/users/update`, {
                 user
@@ -125,9 +143,10 @@ export default function UserInformation() {
                 headers: {
                     Authorization: hasAccount.userToken
                 }
-            }).then(res=> {
-                console.log(res.data);
+            }).then(res => {
+                setCookie("hasAccount", { user }, { path: "/" })
                 setDisabled(true)
+                console.log(res.data);
             }).catch(err => {
                 setError(true)
                 setMsg(err.response.data.message)
@@ -138,9 +157,6 @@ export default function UserInformation() {
             setMsg("Fill in the blanks")
         }
     }
-
-    console.log(hasAccount);
-
     if (hasAccount) {
         return (
             <>
@@ -244,10 +260,12 @@ export default function UserInformation() {
                                                     })}
                                                 </div>
                                             </div>
-                                            <input type="text" disabled placeholder={birthDate} />
+                                            <div className={styles.phoneNumber}>
+                                                <DateTimePicker className={styles.dateTimePicker} onChange={setDate} value={date} />
+                                            </div>
                                             <div className={styles.phoneNumber}>
                                                 <p>+998</p>
-                                                <input value={phoneNumber} onChange={(t) => setPhoneNumber(t.target.value)} minLength={9} maxLength={9} required type="text" placeholder={phoneNumber} />
+                                                <input value={phoneNumber.slice(3)} onChange={(t) => setPhoneNumber(t.target.value)} minLength={9} maxLength={9} required type="text" placeholder={phoneNumber} />
                                             </div>
                                             <div className={disabled !== true ? styles.selectValue : `${styles.selectValue} ${styles.disabeld}`} onClick={() => {
                                                 disabled === false && setCountryModalOpener(!countryModalOpener)

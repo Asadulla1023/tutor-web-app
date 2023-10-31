@@ -1,5 +1,12 @@
 .container {
-    width: var(--max-width);
-    display: flex;
-    justify-content: space-between;
+  width: 1180px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 1253px) {
+  .container {
+    width: 100%;
+    padding: 0 1.5%;
+  }
 }

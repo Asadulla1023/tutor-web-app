@@ -208,6 +208,7 @@
   position: sticky;
   position: -webkit-sticky;
   top: 1rem;
+  width: 40%;
   background: #fff;
   border-radius: 20px;
   height: fit-content;

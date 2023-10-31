@@ -9,7 +9,7 @@ export default function Page() {
         <div className={styles.category}>
             <Container >
                 <div className={styles.content}>
-            <Navigation navigation='Главная/Личный кабинет' />
+                    <Navigation navigation='Главная/Личный кабинет' />
                     <h2>Категории</h2>
                     <div className={styles.wrapper}>
                         {i.map(i => {

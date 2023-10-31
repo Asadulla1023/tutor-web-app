@@ -105,6 +105,11 @@
   font-size: 18px;
   color: #626262;
   margin-right: 2rem;
+  transition: 0.2s;
+}
+
+.navItem:hover {
+  color: var(--button-bg);
 }
 
 .selectLanguage > div:hover {

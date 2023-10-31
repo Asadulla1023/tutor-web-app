@@ -16,7 +16,9 @@
     "react": "latest",
     "react-cookie": "^6.1.1",
     "react-datetime-picker": "^5.5.3",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "react-video-js-player": "^1.1.1",
+    "video.js": "^8.6.1"
   },
   "devDependencies": {
     "@types/node": "latest",

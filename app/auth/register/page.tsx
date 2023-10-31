@@ -161,6 +161,7 @@ const Page = () => {
       }).then(res => {
         setCookie("hasAccount", { user, userToken: res.data.token }, { path: "/" })
         push("/profile")
+        console.log(res.data);
       }).catch(err => {
         setError(true)
         setMsg("This phone or email has already used");
