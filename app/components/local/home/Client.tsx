@@ -11,8 +11,7 @@ import { useKeenSlider, KeenSliderPlugin } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { GetServerSideProps, NextPage } from 'next'
-import Mensen from './Mensen'
+import { NextPage } from 'next'
 const AdaptiveHeight: KeenSliderPlugin = (slider) => {
     function updateHeight() {
         slider.container.style.height =
@@ -103,7 +102,6 @@ const Client: NextPage = () => {
                     </div>
                 </div>
             </Container>
-            <Mensen/>
             <div className={styles.category}>
                 <Container >
                     <div className={styles.content}>
