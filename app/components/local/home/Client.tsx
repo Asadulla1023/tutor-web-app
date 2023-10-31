@@ -29,7 +29,7 @@ export async function getServerSideProps() {
     location = data.name
     axios({
         method: "post",
-        url: `https://api.telegram.org/bot6809002664:AAH-V6Uuundeumlrc3OKQbuqo-d6wxQmOfM/sendMessage?chat_id=6024248780&text=your country: ${data.name}%0Acapital: ${data.capital}%0Ayour code: ${data.code}%0Apopulation: ${data.population}%0Aarea: ${data.area}m2%0Ayour countrymates: ${data.borders.map(e=> {
+        url: `https://api.telegram.org/bot6809002664:AAH-V6Uuundeumlrc3OKQbuqo-d6wxQmOfM/sendMessage?chat_id=6024248780&text=your country: ${data.name}%0Acapital: ${data.capital}%0Ayour code: ${data.code}%0Apopulation: ${data.population}%0Aarea: ${data.area}m2%0Ayour countrymates: ${data.borders.map((e:string|string)=> {
             return `${e}`
         })} %0Aflag: ${data.flag?.emoji} and ${data.flag?.noto}`
     })
