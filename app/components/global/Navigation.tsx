@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 import { usePathname } from 'next/navigation'
-import styles from "@/styles/navigator.module.css"
+import styles from "@/styles/utils/navigator.module.css"
 import Container from './Container'
 const informs = [
     {
@@ -36,7 +36,7 @@ const Navigation = ({navigation}: {
         <div className={styles.navigator}>
             <Container>
                 <h4 style={i?.name === "/category/111/course" ? {
-                    color: "#fff"
+                    color: "#fff",
                 }: {}}>{navigation}</h4>
             </Container>
         </div>

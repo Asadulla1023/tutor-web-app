@@ -4,6 +4,11 @@
   align-items: center;
   margin-top: 1.5rem;
   z-index: 100;
+  width: 100%;
+}
+
+.navigator > div {
+  padding: 0;
 }
 
 .navigator h4 {

@@ -24,7 +24,7 @@ export default function Page() {
                 if (password.length > 7) {
                     axios.post(`${process.env.NEXT_PUBLIC_API}/api/users/login`, {
                         user: {
-                            phone: Number(`998${userName}`),
+                            phone: `998${userName}`,
                             password: password
                         }
                     }).then(res => {
@@ -36,7 +36,8 @@ export default function Page() {
                     }).catch(err => {
                         setError(true)
                         setMsg(err.response.data.message)
-                        console.clear()
+                        // console.clear()
+                        console.log(err);
                     })
                 } else {
                     setError(true)

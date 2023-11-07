@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from "@/styles/category/course.module.css"
 import Container from '@/app/components/global/Container'
 import Image from 'next/image'
@@ -9,7 +9,9 @@ import { useKeenSlider, KeenSliderPlugin } from "keen-slider/react"
 import Review from '@/app/components/local/utils/Review'
 import "keen-slider/keen-slider.min.css"
 import Navigation from '@/app/components/global/Navigation'
-import VideoQuality from '@/app/components/local/video/VideoQuality'
+import Plyr from 'plyr'
+import 'plyr/dist/plyr.css';
+// import Video from "next-video"
 const AdaptiveHeight: KeenSliderPlugin = (slider) => {
   function updateHeight() {
     slider.container.style.height =
@@ -18,6 +20,14 @@ const AdaptiveHeight: KeenSliderPlugin = (slider) => {
   slider.on("created", updateHeight)
   slider.on("slideChanged", updateHeight)
 }
+
+
+const videoQualities = [
+  { label: 'Low', file: 'https://example.com/video_low.mp4' },
+  { label: 'Medium', file: 'https://example.com/video_medium.mp4' },
+  { label: 'High', file: 'https://example.com/video_high.mp4' },
+];
+
 const Client = () => {
   const [isCourse, setIsCourse] = useState<boolean>(false)
   const [currentSlide, setCurrentSlide] = useState<number>(0)
@@ -34,30 +44,38 @@ const Client = () => {
     },
     [AdaptiveHeight]
   )
-  const playerRef = React.useRef(null);
-  const videoJsOptions = {
-    autoplay: true,
-    controls: true,
-    responsive: true,
-    fluid: true,
-    sources: [{
-      src: '/path/to/video.mp4',
-      type: 'video/mp4'
-    }]
-  };
+  // const playerRef = React.useRef(null);
+  // const videoJsOptions = {
+  //   autoplay: true,
+  //   controls: true,
+  //   responsive: true,
+  //   fluid: true,
+  //   sources: [{
+  //     src: '/path/to/video.mp4',
+  //     type: 'video/mp4'
+  //   }]
+  // };
 
-  const handlePlayerReady = (player: any) => {
-    playerRef.current = player;
+  // const handlePlayerReady = (player: any) => {
+  //   playerRef.current = player;
 
-    // You can handle player events here, for example:
-    player.on('waiting', () => {
-      console.log('player is waiting');
-    });
+  //   // You can handle player events here, for example:
+  //   player.on('waiting', () => {
+  //     console.log('player is waiting');
+  //   });
 
-    player.on('dispose', () => {
-      console.log('player will dispose');
-    });
-  };
+  //   player.on('dispose', () => {
+  //     console.log('player will dispose');
+  //   });
+  // };
+  const videoRef = useRef<any>(null);
+
+  useEffect(() => {
+    const player = new Plyr(videoRef.current);
+    return () => {
+      player.destroy();
+    };
+  }, []);
   return (
     isCourse === false ? <>
       <div className={styles.author}>
@@ -187,8 +205,10 @@ const Client = () => {
               </div>
             </div>
             <div className={styles.rightSide}>
-              <VideoQuality options={videoJsOptions} onReady={handlePlayerReady} />
-              <source src='/images/intro.mp4' type="video/mp4" />
+              <video ref={videoRef}>
+                <source src='/images/intro.mp4' type="video/mp4" />
+                {/* <source src="/images/intro.mp4" type="video/mp4" /> */}
+              </video>
               <div className={styles.card}>
                 <div className={styles.courseCost}>
                   <h3>10$</h3>
@@ -280,7 +300,7 @@ const Client = () => {
               }}>КУРСЫ</h2>
               <div className={styles.courseWrapper}>
                 {[1, 2, 3, 4].map((i) => {
-                  return <CourseCard key={i} />
+                  return <CourseCard key={i*Math.random()**Math.random()+193218378} />
                 })}
               </div>
             </div>

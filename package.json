@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3003",
+    "dev": "next dev -p 3003 --turbo",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -13,13 +13,12 @@
     "browser-cookies": "^1.2.0",
     "dotenv": "^16.3.1",
     "keen-slider": "^6.8.6",
-    "next": "^13.5.7-canary.37",
-    "react": "latest",
+    "next": "^14.0.1",
+    "plyr": "^3.7.8",
+    "react": "^18.2.0",
     "react-cookie": "^6.1.1",
     "react-datetime-picker": "^5.5.3",
-    "react-dom": "latest",
-    "react-video-js-player": "^1.1.1",
-    "video.js": "^8.6.1"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "latest",
@@ -27,7 +26,8 @@
     "@types/react-datepicker": "^4.19.1",
     "@types/react-dom": "latest",
     "eslint": "latest",
-    "eslint-config-next": "latest",
-    "typescript": "latest"
+    "eslint-config-next": "^14.0.1",
+    "typescript": "latest",
+    "video.js": "^8.6.1"
   }
 }
