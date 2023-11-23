@@ -206,6 +206,7 @@
 
 .rightSide {
   position: sticky;
+  overflow: hidden;
   position: -webkit-sticky;
   top: 1rem;
   width: 40%;

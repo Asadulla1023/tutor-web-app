@@ -21,11 +21,13 @@
   transition: 0.2s;
 }
 
-.courseCard:hover, .categoryCard:hover {
+.courseCard:hover,
+.categoryCard:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.categoryCard > img, .courseCard > img {
+.categoryCard > img,
+.courseCard > img {
   object-fit: cover;
   border-radius: 20px;
   width: 100%;
@@ -37,16 +39,20 @@
 }
 
 .categoryCard > h3 {
-    z-index: 2;
-    margin: 1rem auto;
-    color: #fff;
+  z-index: 2;
+  margin: 1rem auto;
+  color: #fff;
 }
 
 .categoryCard > .gradient {
-    position: absolute;
-    z-index:1;
-    background: linear-gradient(359deg, rgba(41, 203, 115, 0.71) -11.7%, rgba(146, 146, 146, 0.00) 80.95%);
-    height: 100%;
+  position: absolute;
+  z-index: 1;
+  background: linear-gradient(
+    359deg,
+    rgba(41, 203, 115, 0.71) -11.7%,
+    rgba(146, 146, 146, 0) 80.95%
+  );
+  height: 100%;
   border-radius: 20px;
   width: 100%;
 }
@@ -93,7 +99,7 @@
   font-weight: 400;
   font-size: 19px;
   color: var(--button-bg);
-} 
+}
 
 .courseCost {
   display: flex;
@@ -120,7 +126,8 @@
 }
 
 @media screen and (max-width: 900px) {
-  .categoryCard, .courseCard {
+  .categoryCard,
+  .courseCard {
     width: 32%;
   }
 }

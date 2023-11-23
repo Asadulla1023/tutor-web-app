@@ -9,8 +9,8 @@ import { useKeenSlider, KeenSliderPlugin } from "keen-slider/react"
 import Review from '@/app/components/local/utils/Review'
 import "keen-slider/keen-slider.min.css"
 import Navigation from '@/app/components/global/Navigation'
-import Plyr from 'plyr'
-import 'plyr/dist/plyr.css';
+import VideoQuality from '@/app/components/local/video/VideoQuality'
+
 // import Video from "next-video"
 const AdaptiveHeight: KeenSliderPlugin = (slider) => {
   function updateHeight() {
@@ -20,13 +20,6 @@ const AdaptiveHeight: KeenSliderPlugin = (slider) => {
   slider.on("created", updateHeight)
   slider.on("slideChanged", updateHeight)
 }
-
-
-const videoQualities = [
-  { label: 'Low', file: 'https://example.com/video_low.mp4' },
-  { label: 'Medium', file: 'https://example.com/video_medium.mp4' },
-  { label: 'High', file: 'https://example.com/video_high.mp4' },
-];
 
 const Client = () => {
   const [isCourse, setIsCourse] = useState<boolean>(false)
@@ -44,38 +37,15 @@ const Client = () => {
     },
     [AdaptiveHeight]
   )
-  // const playerRef = React.useRef(null);
-  // const videoJsOptions = {
-  //   autoplay: true,
-  //   controls: true,
-  //   responsive: true,
-  //   fluid: true,
-  //   sources: [{
-  //     src: '/path/to/video.mp4',
-  //     type: 'video/mp4'
-  //   }]
-  // };
-
-  // const handlePlayerReady = (player: any) => {
-  //   playerRef.current = player;
-
-  //   // You can handle player events here, for example:
-  //   player.on('waiting', () => {
-  //     console.log('player is waiting');
-  //   });
-
-  //   player.on('dispose', () => {
-  //     console.log('player will dispose');
-  //   });
-  // };
-  const videoRef = useRef<any>(null);
-
-  useEffect(() => {
-    const player = new Plyr(videoRef.current);
-    return () => {
-      player.destroy();
-    };
-  }, []);
+  const [currentSecond, setCurrentSecond] = useState(0)
+  const [src, setSrc] = useState("/images/480/480p_manifest.mpd")
+  // useEffect(() => {
+  //   if (src) {
+  //     console.log("changed and last second was: ", currentSecond);
+  //     // handleSeekTo(playerRef.current?.getCurrentTime())
+  //   }
+  // }, [src])
+  // console.log(currentSecond)
   return (
     isCourse === false ? <>
       <div className={styles.author}>
@@ -205,10 +175,7 @@ const Client = () => {
               </div>
             </div>
             <div className={styles.rightSide}>
-              <video ref={videoRef}>
-                <source src='/images/intro.mp4' type="video/mp4" />
-                {/* <source src="/images/intro.mp4" type="video/mp4" /> */}
-              </video>
+              <VideoQuality currentSecond={currentSecond} setCurrentSecond={setCurrentSecond} />
               <div className={styles.card}>
                 <div className={styles.courseCost}>
                   <h3>10$</h3>
@@ -300,7 +267,7 @@ const Client = () => {
               }}>КУРСЫ</h2>
               <div className={styles.courseWrapper}>
                 {[1, 2, 3, 4].map((i) => {
-                  return <CourseCard key={i*Math.random()**Math.random()+193218378} />
+                  return <CourseCard key={i * Math.random() ** Math.random() + 193218378} />
                 })}
               </div>
             </div>
