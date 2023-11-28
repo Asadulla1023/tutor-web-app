@@ -1,0 +1,62 @@
+.notification {
+    position: absolute;
+    top: 100%;
+    background: #fff;
+    left: -100%;
+    width: 370px;
+    margin-left: -100px;
+    margin-top: 1rem;
+    box-shadow: 0px 1px 17px 0px rgba(89, 89, 89, 0.08);
+    border-radius: 1rem;
+    padding: 0.5rem 1rem !important;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.topSide {
+    display: flex;justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.topSide > h2 {
+    font-size: 20px;
+}.topSide > svg {
+    width: 18px;
+    cursor: pointer;
+    height: auto;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+}
+
+.msg {
+    background: #FAFAFA;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 1rem;
+    justify-content: space-between;
+}
+
+.msg > h4 {
+    font-size: 14px;
+}
+
+.msg p > svg {
+    width: 14px;
+    height: auto;
+}
+
+.msg > p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--navigation-color);
+}
