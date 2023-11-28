@@ -301,6 +301,7 @@
   }
   .category {
     height: fit-content;
+    padding: 2rem 0;
   }
   .titleOfContent > h2 {
     font-size: 32px;
@@ -386,5 +387,97 @@
   .searchBar > button {
     width: 65px;
     height: 65px;
+  }
+  .skills svg {
+    display: none !important;
+  }
+  .skills {
+    height: 200px;
+    padding: 0.5rem;
+  }
+  .titleOfContent > h2 {
+    font-size: 25px;
+  }
+  .countWithRoute > h3 {
+    font-size: 22px !important;
+  }
+  .description > p {
+    font-size: 15px;
+  }
+  .form > h3 {
+    font-size: 25px;
+  }
+  .form > p {
+    font-size: 16px;
+  }
+  .form > button {
+    width: 250px;
+    font-size: 18px;
+    height: 50px;
+  }
+  .form > input {
+    width: 350px;
+    height: 56px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .searchBar {
+    width: 380px;
+    height: 60px;
+  }
+  .searchBar > input {
+    width: 250px;
+  }
+  .searchBar > button {
+    height: 50px;
+    width: 50px;
+  }
+  .searchBar > button > svg {
+    width: 15px;
+    height: auto;
+  }
+  .skills {
+    width: 49%;
+  }
+  .skills:last-child {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .skills:last-child h3, .skills:last-child p  {
+    text-align: center;
+  }
+  .titleOfContent {
+    flex-direction: column;
+  }
+  .wrapper {
+    row-gap: 0.4rem;
+  }
+
+  .searchCourses {
+    width: 90%;
+  }
+
+  .searchCourses > h3 {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .searchBar {
+    width: 100%;
+  }
+  .searchCourses {
+    width: 100%;
+  }
+  .form {
+    width: 95%;
+  }
+  .form > input {
+    width: 100%;
   }
 }

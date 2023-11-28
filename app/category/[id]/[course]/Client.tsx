@@ -3,49 +3,14 @@ import React, { useEffect, useRef, useState } from 'react'
 import styles from "@/styles/category/course.module.css"
 import Container from '@/app/components/global/Container'
 import Image from 'next/image'
-import Link from 'next/link'
 import CourseCard from '@/app/components/local/category/CourseCard'
-import { useKeenSlider, KeenSliderPlugin } from "keen-slider/react"
 import Review from '@/app/components/local/utils/Review'
-import "keen-slider/keen-slider.min.css"
 import Navigation from '@/app/components/global/Navigation'
 import VideoQuality from '@/app/components/local/video/VideoQuality'
 
-// import Video from "next-video"
-const AdaptiveHeight: KeenSliderPlugin = (slider) => {
-  function updateHeight() {
-    slider.container.style.height =
-      slider.slides[slider.track.details.rel].offsetHeight + "px"
-  }
-  slider.on("created", updateHeight)
-  slider.on("slideChanged", updateHeight)
-}
-
 const Client = () => {
   const [isCourse, setIsCourse] = useState<boolean>(false)
-  const [currentSlide, setCurrentSlide] = useState<number>(0)
-  const [loaded, setLoaded] = useState<boolean>(false)
-  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>(
-    {
-      initial: 0,
-      slideChanged(s) {
-        setCurrentSlide(s.track.details.rel)
-      },
-      created() {
-        setLoaded(true)
-      },
-    },
-    [AdaptiveHeight]
-  )
   const [currentSecond, setCurrentSecond] = useState(0)
-  const [src, setSrc] = useState("/images/480/480p_manifest.mpd")
-  // useEffect(() => {
-  //   if (src) {
-  //     console.log("changed and last second was: ", currentSecond);
-  //     // handleSeekTo(playerRef.current?.getCurrentTime())
-  //   }
-  // }, [src])
-  // console.log(currentSecond)
   return (
     isCourse === false ? <>
       <div className={styles.author}>
@@ -120,18 +85,6 @@ const Client = () => {
                       </div>
                     </div>
                   })}
-                </div>
-              </div>
-              <div className={styles.aboutCourse}>
-                <h3>Описание</h3>
-                <div className={styles.checks}>
-                  <p>
-                    You will master the Python programming language by building 100 unique projects over 100 days.
-                    You will master the Python programming language by building 100 unique projects over 100 days.
-                    You will master the Python programming language by building 100 unique projects over 100 days.
-                    You will master the Python programming language by building 100 unique projects over 100 days.
-                    You will master the Python programming language by building 100 unique projects over 100 days.
-                  </p>
                 </div>
               </div>
               <div className={styles.aboutCourse}>
@@ -287,40 +240,17 @@ const Client = () => {
               </div>
             </Container>
           </div>
-          <div className={styles.reviews}>
+          <div className={styles.review}>
             <Container>
               <div className={styles.authorContent}>
-                <div className={styles.titleOfContent}>
-                  <h2>ОТЗЫВЫ</h2>
+                <h2>ОТЗЫВЫ</h2>
+                <div className={styles.wrapper}>
+                {[1,2,3,4].map(e=>{
+                  return <div className={styles.sliderItem}>
+                  <Review/>
                 </div>
-                <div ref={sliderRef} className={`keen-slider ${styles.reviewWrapper}`} style={{
-                  gap: 8,
-                  height: 255,
-                  margin: 8
-                }}>
-                  {[16, 26, 36, 46].map((i, index) => {
-                    return <div key={i} className={`keen-slider__slide number-slide${index} ${styles.sliderItem}`}><Review key={index + Math.random()} /><Review /></div>
-                  })}
+                })}
                 </div>
-                {loaded && instanceRef.current && (
-                  <div className={styles.controller}>
-                    {
-                      [
-                        0, 1, 2, 3
-                      ].map((idx) => {
-                        return (
-                          <button
-                            key={idx * Math.random() ** 10 + "sheeesh"}
-                            onClick={() => {
-                              instanceRef.current?.moveToIdx(idx)
-                            }}
-                            className={(currentSlide === idx ? styles.active : styles.unActive)}
-                          ></button>
-                        )
-                      })}
-                  </div>
-                )}
-
               </div>
             </Container>
           </div>

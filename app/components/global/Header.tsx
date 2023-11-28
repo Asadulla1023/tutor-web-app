@@ -6,9 +6,57 @@ import styles from "@/styles/header.module.css"
 import Container from './Container'
 import { useCookies } from 'react-cookie'
 import { useRouter } from 'next/navigation'
+import { stagger, useAnimate } from 'framer-motion'
 const nav_items = [
   { name: "Главная", link: "/" }, { name: "Категории", link: "/category" }, { name: "Мои чаты", link: "/profile" }
 ]
+
+function useMenuAnimation(isOpen: boolean) {
+  const [scope, animate] = useAnimate();
+
+  useEffect(() => {
+    const menuAnimations = isOpen
+      ? [
+        [
+          "nav",
+          { transform: "translateX(0%)" },
+          { ease: [0.08, 0.65, 0.53, 0.96], duration: 0.6 }
+        ],
+        [
+          "li",
+          { transform: "scale(1)", opacity: 1, filter: "blur(0px)" },
+          { delay: stagger(0.05), at: "-0.1" }
+        ]
+      ]
+      : [
+        [
+          "li",
+          { transform: "scale(0.5)", opacity: 0, filter: "blur(10px)" },
+          { delay: stagger(0.05, { from: "last" }), at: "<" }
+        ],
+        ["nav", { transform: "translateX(-100%)" }, { at: "-0.1" }]
+      ];
+
+    animate([
+      [
+        "path.top",
+        { d: isOpen ? "M 3 16.5 L 17 2.5" : "M 2 2.5 L 20 2.5" },
+        { at: "<" }
+      ],
+      ["path.middle", { opacity: isOpen ? 0 : 1 }, { at: "<" }],
+      [
+        "path.bottom",
+        { d: isOpen ? "M 3 2.5 L 17 16.346" : "M 2 16.346 L 20 16.346" },
+        { at: "<" }
+      ],
+      // @ts-ignore
+      ...menuAnimations
+    ]);
+  }, [isOpen]);
+
+  return scope;
+}
+
 const languages = ["/icons/ru.svg", "/icons/uz.svg"]
 function Header() {
   const [mouseOver, setMouseOver] = useState<boolean>(false);
@@ -45,8 +93,12 @@ function Header() {
     window.addEventListener("scroll", changeBgHandler);
   }, []);
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const scope = useMenuAnimation(isOpen);
+
   const [cookie, setCookie] = useCookies(["hasAccount"])
-  const {push} = useRouter()
+  const { push } = useRouter()
   return (
     <header style={
       isHeaderVisible === true
@@ -130,8 +182,61 @@ function Header() {
             }
           }}>Личный кабинет</button>
         </nav>
+        <div className={styles.burger} ref={scope}>
+          <Menu />
+          <MenuToggle toggle={() => setIsOpen(!isOpen)} />
+        </div>
       </Container>
     </header>
   )
 }
+
+const Path = (props:any) => (
+  <path
+    fill="transparent"
+    strokeWidth="3"
+    stroke="#fff"
+    strokeLinecap="round"
+    {...props}
+  />
+);
+
+export const MenuToggle = ({ toggle }: any) => (
+  <button onClick={toggle}>
+    <svg width="23" height="18" viewBox="0 0 23 18">
+      <Path
+        d="M 2 2.5 L 20 2.5"
+        className="top"
+        variants={{
+          closed: { d: "M 2 2.5 L 20 2.5" },
+          open: { d: "M 3 16.5 L 17 2.5" }
+        }}
+      />
+      <Path d="M 2 9.423 L 20 9.423" opacity="1" className="middle" />
+      <Path
+        d="M 2 16.346 L 20 16.346"
+        className="bottom"
+        variants={{
+          closed: { d: "M 2 16.346 L 20 16.346" },
+          open: { d: "M 3 2.5 L 17 16.346" }
+        }}
+      />
+    </svg>
+  </button>
+);
+
+
+export function Menu() {
+  return (
+    <nav className={styles.menu}>
+      <ul>
+        <li>Portfolio</li>
+        <li>About</li>
+        <li>Contact</li>
+        <li>Search</li>
+      </ul>
+    </nav>
+  );
+}
+
 export default memo(Header)

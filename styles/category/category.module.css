@@ -12,6 +12,7 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    width: 100%;
 }
 
 .wrapper {
@@ -91,4 +92,24 @@
   background: #fff;
   border-radius: 20px;
   padding: 1rem;
+}
+.wrapper {
+  width: 100%;
+}
+
+@media screen and (max-width: 500px) {
+  .sortBy {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .modal {
+    width: 280px;
+    left: 0;
+    margin-left: 70px;
+    margin-top: 5rem;
+  }
+  .sort {
+    position: relative;
+  }
 }

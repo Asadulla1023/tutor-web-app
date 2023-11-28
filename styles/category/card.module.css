@@ -130,4 +130,49 @@
   .courseCard {
     width: 32%;
   }
+  .courseTitle {
+    font-size: 16px;
+  }
+  .stars > h4, .seen > h4 {
+    font-size: 14px;
+  }
+  .stars > svg, .seen > svg {
+    width: 13px;
+    height: auto;
+  }
+  .courseCost > h3 {
+    font-size: 22px;
+  }
+  .courseCost > h4 {
+    font-size: 17px;
+  }
+  .description {
+    gap: 0.3rem;
+  }
+  .categoryCard {
+    height: 250px;
+  }
+  .categoryCard >img {
+    height: 250px;
+  }
+}
+
+
+@media screen and (max-width: 590px) {
+  .categoryCard, .courseCard {
+    width: 49%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .courseTitle {
+    font-size: 13px;
+  }
+
+  .categoryCard {
+    height: 200px;
+  }
+  .categoryCard > img {
+    height: 200px;
+  }
 }
