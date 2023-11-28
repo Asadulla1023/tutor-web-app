@@ -35,3 +35,33 @@
     color: var(--navigation-color);
     font-size: 16px;
 }
+
+@media screen and (max-width: 650px) {
+    .menu {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .footer >div, .menu {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .menuLeft {
+        gap: 0.3rem;
+    }
+
+    .menu > .menuLeft > ul {
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+    }
+    .listWrapper {
+        gap: 0.3rem;
+        justify-content: center;
+        align-items: center;
+    }
+}
