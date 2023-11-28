@@ -246,7 +246,7 @@ const Client = () => {
                 <h2>ОТЗЫВЫ</h2>
                 <div className={styles.wrapper}>
                 {[1,2,3,4].map(e=>{
-                  return <div className={styles.sliderItem}>
+                  return <div key={e*Math.random() + Math.random()**2/7326473} className={styles.sliderItem}>
                   <Review/>
                 </div>
                 })}
