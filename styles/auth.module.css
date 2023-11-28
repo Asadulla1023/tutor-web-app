@@ -166,3 +166,80 @@
 .dateTimePicker {
   margin: auto;
 }
+
+@media screen and (max-width: 1240px) {
+  .singIn {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .singIn > input {
+    width: 31%;
+  }
+  .selectValue {
+    width: 31% !important;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+    .logIn > img {
+      display: none;
+    }
+    .logIn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .content > h2 {
+      text-align: center;
+    }
+}
+
+@media screen and (max-width: 700px) {
+  .singIn > input, .selectValue {
+    width: 48% !important;
+  }
+  .singIn .complete > button {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .singIn > input, .selectValue {
+    width: 100% !important;
+  }
+  .singIn .complete {
+    margin-top: 0;
+  }
+  .content {
+    gap: 1rem;
+  }
+  .auth {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .form {
+    width: 100%;
+  }
+  .form > input {
+    width: 100%;
+  }
+  .form > div {
+    width: 100%;
+  }
+  .complete button {
+    width: 100% !important;
+    font-size: 16px;
+    
+  }
+  .singIn .complete button {
+    margin-top: -6rem;
+  }
+   .complete {
+    width: 100%;
+    flex-direction: column;
+  }
+}

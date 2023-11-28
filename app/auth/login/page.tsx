@@ -65,7 +65,9 @@ export default function Page() {
     return (
         <>
             <Error setError={setError} error={error} msg={msg} />
-            <div className={styles.auth}>
+            <div style={{
+                marginTop: 50
+            }} className={styles.auth}>
                 <Container>
                     <div className={styles.content}>
                         <h2>Авторизация</h2>

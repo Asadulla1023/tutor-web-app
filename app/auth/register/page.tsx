@@ -85,7 +85,7 @@ const cities: {
 const Page = () => {
   const [cookie, setCookie] = useCookies(["hasAccount"])
   const [selectGender, setSelectGender] = useState(false)
-  const [selectSex, setSelectSex] = useState("Choose")
+  const [selectSex, setSelectSex] = useState("Choose your gender")
   const [date, setDate] = useState<Value>(new Date());
   const [countryModalOpener, setCountryModalOpener] = useState(false)
   const [error, setError] = useState(false)
@@ -97,7 +97,7 @@ const Page = () => {
   const [country, setCountry] = useState({
     address: {
       street: "",
-      city: "Choose",
+      city: "Choose your region",
       country: "",
     }
   })
