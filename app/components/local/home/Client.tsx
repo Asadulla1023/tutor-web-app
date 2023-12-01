@@ -12,6 +12,7 @@ import "keen-slider/keen-slider.min.css"
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { NextPage } from 'next'
+import ModalIntro from '../utils/ModalIntro'
 const AdaptiveHeight: KeenSliderPlugin = (slider) => {
     function updateHeight() {
         slider.container.style.height =
@@ -54,8 +55,16 @@ const Client: NextPage = () => {
         }
     }, []);
 
+    const [modalIntro, setModalIntro] = useState(false)
+
+    useEffect(()=> {
+        setModalIntro(true)
+    }, [])
+
     return (
-        <main className={styles.main}>
+       <>
+       <ModalIntro modalIntro={modalIntro} setModalIntro={setModalIntro} />
+         <main className={styles.main}>
             <Container>
                 <div className={styles.content}>
                     <div className={styles.entrance}>
@@ -281,6 +290,7 @@ const Client: NextPage = () => {
                 </Container>
             </div>
         </main>
+       </>
     )
 }
 
