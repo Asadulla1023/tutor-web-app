@@ -18,7 +18,7 @@
     height: 100%;
 }
 .container {
-    width: 820px;
+    width: 950px;
     border-radius: 1rem;
     overflow: hidden;
     position: relative;
@@ -40,7 +40,7 @@
     left: 100%;
     top: 0;
     margin-top: 1rem;
-    margin-left: -3rem;
+    margin-left: -2.5rem;
     z-index: 100000;
 }
 
@@ -50,6 +50,13 @@
 }
 
 .container video {
-    width: 750px !important;
+    width: 850px !important;
     border-radius: 1rem;
+}
+
+@media screen and (max-width: 850px) {
+    .content > video {
+        width: 100% !important;
+        height: auto;
+    }
 }
