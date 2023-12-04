@@ -54,9 +54,40 @@
     border-radius: 1rem;
 }
 
+.playButton {
+    position: absolute;
+    left: 50% !important;
+    top: 50% !important;
+    cursor: pointer;
+    margin-left: -2.5rem !important;
+    margin-top: -2.5rem !important; 
+    width: 90px !important;
+    height: 90px !important;
+    transition: 0.3s;
+}
+
+.playButton:hover > svg {
+    scale: 1.1;
+    transform: rotate(90deg);
+}
+
+.playButton:hover  {
+    background: #aaffd04f;
+}
+
+.playButton > svg {
+    padding-left: 0.4rem;
+    width: fit-content;
+    transition: 0.3s ease-in-out;
+    height: fit-content;
+}
+
 @media screen and (max-width: 850px) {
     .content > video {
         width: 100% !important;
         height: auto;
+        border-radius: 0;
+        padding-left: 1%;
+        padding-right: 1%;
     }
 }
